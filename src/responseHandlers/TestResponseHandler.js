@@ -16,6 +16,7 @@ var jsface                  = require('jsface'),
     btoa                    = require("btoa"),
     atob                    = require("atob"),
     tv4                     = require("tv4");
+    Options                 = require('../utilities/Options'),
 require('sugar');
 /**
  * @class TestResponseHandler
@@ -36,7 +37,7 @@ var TestResponseHandler = jsface.Class(AbstractResponseHandler, {
     _onRequestExecuted: function(error, response, body, request) {
         var results = this._runTestCases(error, response, body, request);
         AbstractResponseHandler._onRequestExecuted.call(this, error, response, body, request, results);
-        this._logTestResults(results);
+        this._logTestResults(results, response);
 
         if(this.throwErrorOnLog!==false) {
             ResponseExporter.exportResults();
@@ -286,14 +287,24 @@ var TestResponseHandler = jsface.Class(AbstractResponseHandler, {
     },
 
     // logger for test case results
-    _logTestResults: function(results) {
+    _logTestResults: function(results, response) {
+
+        var wasError = false;
         _und.each(_und.keys(results), function(key) {
             if (results[key]) {
                 log.testCaseSuccess(key);
             } else {
                 ErrorHandler.testCaseError(key);
+                wasError = true;
             }
         });
+
+        if (Globals.verbose && wasError)
+        {
+          log.testCaseWarn("Response Code Received: "+response.statusCode);
+          log.testCaseWarn("Response Body Received: "+response.body);
+        }
+
     }
 });
 

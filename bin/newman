@@ -41,6 +41,7 @@ function parseArguments() {
 		.option('-C, --noColor', 'Disable colored output', null)
 		.option('-k, --insecure', 'Disable strict ssl', null)
 		.option('-l, --tls', 'Use TLSv1', null)
+		.option('-v, --verbose','Verbose request/response logging', null)
 		.option('-N, --encoding [encoding-type]', 'Specify an encoding for the response. Supported values are ascii,utf8,utf16le,ucs2,base64,binary,hex', null)
 		.option('-x, --exitCode', 'Continue running tests even after a failure, but exit with code=1. Incompatible with --stopOnError', null)
 		.option('-o, --outputFile [file]', 'Path to file where output should be written [file]', null)
@@ -114,7 +115,7 @@ function main() {
 	}
 
 	if (program.environment) {
-		// in case of environment variable set the envJson property 
+		// in case of environment variable set the envJson property
 		// on the options object
 		try {
 			newmanOptions.envJson = JSON5.parse(fs.readFileSync(program.environment, 'utf8'));
@@ -177,6 +178,10 @@ function main() {
 
 	if (program.exportEnvironment) {
 		newmanOptions.exportEnvironmentFile = program.exportEnvironment;
+	}
+
+	if (program.verbose){
+		newmanOptions.verbose = program.verbose;
 	}
 
 	if (program.tls) {

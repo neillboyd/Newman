@@ -1,7 +1,7 @@
 var jsface = require('jsface');
 var packageVersion = require('../../package.json').version;
 
-/** 
+/**
  * @name Globals
  * @namespace
  * @classdesc Globals to be used throught Newman.
@@ -34,6 +34,7 @@ var Globals = jsface.Class({
 		this.iterationCount = options.iterationCount || 1;
 		this.html = options.html || false;
 		this.responseEncoding = options.responseEncoding;
+		this.verbose = options.verbose;
 	}
 });
 

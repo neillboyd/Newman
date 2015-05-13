@@ -1,6 +1,6 @@
 {
-  "name": "newman",
-  "version": "1.2.15",
+  "name": "bitnet-newman",
+  "version": "1.2.17",
   "author": "Abhijit Kane & Arjun Variar & Prakhar Srivastav",
   "main": "Newman",
   "homepage": "https://github.com/a85/Newman",
@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/a85/Newman.git"
+  },
+"publishConfig": {
+    "registry": "http://repos.developnet.io:4873/"
   },
   "contributors": [
     {

@@ -8,7 +8,7 @@ var jsface  = require("jsface"),
 
 /**
  * @name Logger
- * @namespace 
+ * @namespace
  * @classdef Logger class, used for all logging inside newman
  */
 var Logger = jsface.Class([EventEmitter], {
@@ -94,6 +94,11 @@ var Logger = jsface.Class([EventEmitter], {
 
 	testCaseSuccess: function(log) {
 		this.success("    " + Symbols.symbols.ok + log + "\n");
+		return this;
+	},
+
+	testCaseWarn: function(log){
+		this.warn("    " + Symbols.symbols.warn + log + "\n");
 		return this;
 	},
 
