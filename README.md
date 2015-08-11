@@ -1,9 +1,14 @@
-# Newman [![Build Status](https://travis-ci.org/a85/Newman.svg?branch=master)](https://travis-ci.org/a85/Newman) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
-[![NPM](https://nodei.co/npm/newman.png?downloads=true)](https://nodei.co/npm-dl/newman/)
+<img src="https://s3.amazonaws.com/web-artefacts/newman-128.png" />
+
+# Newman [![Build Status](https://travis-ci.org/postmanlabs/newman.svg?branch=master)](https://travis-ci.org/postmanlabs/newman) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) <a href="https://gitter.im/postmanlabs/newman" target="_blank"><img src="https://badges.gitter.im/Join%20Chat.svg" /></a>
+
+
 
 Newman is a command-line collection runner for [Postman](http://getpostman.com). It allows you to effortlessly run and test a Postman collection directly from the command-line. It is built with extensibility in mind so that you can easily integrate it with your continuous integration servers and build systems.
 
 Newman maintains feature parity with Postman and allows you to run collections just the way they are executed inside the collection runner in Postman.
+
+[![NPM](https://nodei.co/npm/newman.png?downloads=true)](https://nodei.co/npm-dl/newman/)
 
 ## Getting Started
 Newman is built on Node.js. To run Newman, make sure you have Node.js installed. Node.js can be downloaded and installed from [here](http://nodejs.org/download/) on Linux, Windows and Mac OSX.
@@ -38,26 +43,38 @@ $ newman -h
 
 Options:
 
--h, --help                output usage information
--V, --version             output the version number
--c, --collection [file]   Specify a Postman collection as a JSON [file]
--u, --url [url]           Specify a Postman collection as a [url]
--f, --folder [folderName] Specify a single folder to run from a collection. To be used with -c or -u.
--e, --environment [file]  Specify a Postman environment as a JSON [file]
--d, --data [file]         Specify a data file to use either json or csv
--g, --global [file]       Specify a Postman globals file as JSON [file]
--y, --delay [number]      Specify a delay (in ms) between requests [number]
--s, --stopOnError         Stops the runner when a test case fails
--j, --noSummary           Doesn't show the summary for each iteration
--n, --number [number]     Define the number of iterations to run
--C, --noColor             Disable colored output
--k, --insecure            Disable strict ssl
--l, --tls                 Use TLSv1
--o, --outputFile [file]   Path to file where output should be written. [file]
--x, --exitCode            Continue running tests even after a failure, but exit with code=1
--i, --import [file]       Import a Postman backup file, and save collections, environments, and globals. [file]
--p, --pretty              (Use with -i) Enable pretty-print while saving imported collections, environments, and globals
--H, --html                Export a HTML report to a specified file [file]
+Utility:
+-h, --help                  output usage information
+-V, --version               output the version number
+
+Basic setup:
+-c, --collection [file]     Specify a Postman collection as a JSON [file]
+-u, --url [url]             Specify a Postman collection as a [url]
+-f, --folder [folderName]   Specify a single folder to run from a collection. To be used with -c or -u.
+-e, --environment [file]    Specify a Postman environment as a JSON [file]
+-d, --data [file]           Specify a data file to use either json or csv
+-g, --global [file]         Specify a Postman globals file as JSON [file]
+-n, --number [number]       Define the number of iterations to run
+-i, --import [file]         Import a Postman backup file, and save collections, environments, and globals. [file]
+-p, --pretty                (Use with -i) Enable pretty-print while saving imported collections, environments, and globals
+
+Request options:
+-y, --delay [number]            Specify a delay (in ms) between requests [number]
+-r, --requestTimeout [number]   Specify a request timeout (in ms) for a request
+
+Misc.:
+-s, --stopOnError           Stops the runner when a test case fails
+-j, --noSummary             Doesn't show the summary for each iteration
+-C, --noColor               Disable colored output
+-k, --insecure              Disable strict ssl
+-l, --tls                   Use TLSv1
+-x, --exitCode              Continue running tests even after a failure, but exit with code=1
+
+Output:
+-o, --outputFile [file]     Path to file where output should be written. [file]
+-t, --testReportFile [file] Path to file where results should be written as JUnit XML [file]
+-H, --html                  Export a HTML report to a specified file [file]
+
 ```
 
 Use the `-n` option to set the number of iterations you want to run the collection for.
@@ -184,4 +201,6 @@ With this, your Newman is set to run automatically every hour.
 Note: Exact location for `cron` is dependent on the linux distribution you are running. See specific `cron` instructions for your distribution. For an introduction to `cron` checkout [this](http://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800) article.
 
 ## License
-Apache. See the LICENSE file for more information
+Apache-2.0. See the LICENSE file for more information
+
+[![Analytics](https://ga-beacon.appspot.com/UA-43979731-9/newman/readme)](https://www.getpostman.com)
